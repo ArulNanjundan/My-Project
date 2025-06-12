@@ -66,10 +66,7 @@ export async function POST(req: NextRequest) {
               buffer = '';
             }
           } catch (e) {
-            // If the chunk is not a complete JSON, keep buffering
-            // This basic example assumes a single JSON response or complete JSON chunks.
-            // For true token-by-token streaming, a more advanced JSON parsing approach might be needed.
-            // For now, we'll just send incomplete chunks as well, or wait for the full JSON.
+            
           }
         }
         controller.close();
