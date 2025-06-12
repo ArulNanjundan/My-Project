@@ -1,9 +1,7 @@
-import ChatBox from "../components/ChatBox";
+import ChatBox from '@/app/components/ChatBox';
 
-export default function ChatPage() {
+export default function HomePage() {
   return (
-    <main className="min-h-screen flex items-center justify-center bg-gray-100">
-      <ChatBox />
-    </main>
+    <ChatBox />
   );
 }

@@ -1,24 +1,27 @@
-import { ListNotesInput, AddNoteInput } from './notesync.schema'
+import { z } from "zod";
+import { notesyncInputSchema } from "./notesync.schema";
 
-let notes = [
-  { id: '1', title: 'Learn Next.js' },
-  { id: '2', title: 'Build a mock integration' },
-  { id: '3', title: 'Deploy to Vercel' },
-]
+export const listNotes = async (input: z.infer<typeof notesyncInputSchema>) => {
+  const validatedInput = notesyncInputSchema.parse(input);
 
-export async function listNotes(input: ListNotesInput) {
-  const { query, maxResults = 3 } = input
-  let result = notes
+  const mockNotes = [
+    { id: "1", title: "Welcome Note", content: "This is your first note" },
+    { id: "2", title: "Project Ideas", content: "Build an AI app using Next.js" },
+    { id: "3", title: "Daily Goals", content: "1. Code\n2. Eat\n3. Sleep" },
+  ];
 
-  if (query) {
-    result = result.filter(note => note.title.toLowerCase().includes(query.toLowerCase()))
-  }
+  const query = validatedInput.query?.toLowerCase();
 
-  return result.slice(0, maxResults)
-}
+  const filteredNotes = query
+    ? mockNotes.filter(note =>
+        note.title.toLowerCase().includes(query)
+      )
+    : mockNotes;
 
-export async function addNote(input: AddNoteInput) {
-  const newNote = { id: String(notes.length + 1), title: input.title }
-  notes.unshift(newNote)
-  return newNote
-}
+  const result = filteredNotes.slice(0, validatedInput.maxResults);
+
+  return {
+    notes: result,
+    count: result.length,
+  };
+};

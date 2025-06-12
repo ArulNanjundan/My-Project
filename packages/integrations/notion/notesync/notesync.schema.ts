@@ -1,13 +1,6 @@
-import { z } from 'zod'
+import { z } from "zod";
 
-export const listNotesSchema = z.object({
+export const notesyncInputSchema = z.object({
+  maxResults: z.number().min(1).max(50).default(10),
   query: z.string().optional(),
-  maxResults: z.number().min(1).max(10).optional(),
-})
-
-export const addNoteSchema = z.object({
-  title: z.string().min(1),
-})
-
-export type ListNotesInput = z.infer<typeof listNotesSchema>
-export type AddNoteInput = z.infer<typeof addNoteSchema>
+});
