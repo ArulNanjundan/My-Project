@@ -1,4 +1,4 @@
-// app/api/todos/route.ts
+
 import { NextResponse } from 'next/server'
 
 type Todo = {
@@ -7,18 +7,16 @@ type Todo = {
   completed: boolean
 }
 
-// In-memory store (will reset on server restart)
 let todos: Todo[] = [
   { id: 1, title: 'Finish Next.js test', completed: false },
   { id: 2, title: 'Read documentation', completed: true },
 ]
 
-// GET: Return the list of todos
+
 export async function GET() {
   return NextResponse.json(todos)
 }
 
-// POST: Add a new todo item
 export async function POST(req: Request) {
   const body = await req.json()
 
