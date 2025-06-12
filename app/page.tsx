@@ -5,10 +5,10 @@ export default function LandingPage() {
     <div className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-br from-blue-100 to-indigo-200 p-4 font-sans antialiased text-gray-800">
       <div className="text-center bg-white p-8 md:p-12 rounded-xl shadow-2xl max-w-3xl w-full transform transition-all duration-300 hover:scale-[1.02] border border-gray-200">
         <h1 className="text-4xl md:text-5xl font-extrabold text-indigo-700 mb-4 tracking-tight leading-tight">
-         Intership Projects
+          Intership Projects
         </h1>
         <p className="text-lg md:text-xl text-gray-600 mb-8 max-w-prose mx-auto">
-         Welcome to my project profile. Here, I've outlined my internship drive project ideas, showcasing my approach to different topics. Your feedback is welcome.
+          Welcome to my project profile. Here, I&apos;ve outlined my internship drive project ideas, showcasing my approach to different topics. Your feedback is welcome.
         </p>
 
         <div className="flex flex-col sm:flex-row justify-center gap-4">
