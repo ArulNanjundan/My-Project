@@ -6,7 +6,7 @@ type Todo = {
   completed: boolean;
 };
 
-let todos: Todo[] = [
+const todos: Todo[] = [
   { id: 1, title: 'Finish Next.js test', completed: false },
   { id: 2, title: 'Read documentation', completed: true },
 ];
