@@ -1,3 +1,4 @@
+
 import { NextRequest, NextResponse } from 'next/server';
 
 const mockNotes = [
@@ -9,7 +10,7 @@ const mockNotes = [
   {
     id: '2',
     title: 'Projects',
-    content: 'Exam Registration\nE-Commerce UI Deign\nQuiz using JavaFX',
+    content: 'Exam Registration\nE-Commerce UI Design\nQuiz using JavaFX',
   },
 ];
 
