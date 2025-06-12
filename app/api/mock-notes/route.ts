@@ -13,6 +13,6 @@ const mockNotes = [
   },
 ];
 
-export async function GET(req: NextRequest) {
+export async function GET(_req: NextRequest) {
   return NextResponse.json({ notes: mockNotes });
 }
