@@ -4,7 +4,7 @@ export async function POST(req: NextRequest) {
   const GEMINI_API_KEY = process.env.GEMINI_API_KEY;
 
   if (!GEMINI_API_KEY) {
-    console.error("GEMINI_API_KEY is not set in environment variables.");
+    console.error('GEMINI_API_KEY is not set in environment variables.');
     return NextResponse.json(
       { error: 'Server configuration error: Gemini API key missing.' },
       { status: 500 }
@@ -19,7 +19,7 @@ export async function POST(req: NextRequest) {
     }
 
     const geminiPayload = {
-      contents: [{ role: "user", parts: [{ text: prompt }] }],
+      contents: [{ role: 'user', parts: [{ text: prompt }] }],
     };
 
     const geminiApiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${GEMINI_API_KEY}`;
@@ -65,10 +65,11 @@ export async function POST(req: NextRequest) {
               controller.enqueue(new TextEncoder().encode(textPart));
               buffer = '';
             }
-          } catch (e) {
-            
+          } catch {
+            // wait for full chunk
           }
         }
+
         controller.close();
       },
     });
@@ -80,9 +81,7 @@ export async function POST(req: NextRequest) {
         'X-Content-Type-Options': 'nosniff',
       },
     });
-
-  } catch (error) {
-    console.error('Server-side error in /api/chat route:', error);
+  } catch {
     return NextResponse.json({ error: 'Internal server error.' }, { status: 500 });
   }
 }
